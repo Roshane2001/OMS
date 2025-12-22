@@ -13,7 +13,7 @@ while (ob_get_level()) {
 }
 
 // Include the database connection file
-include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/connection/db_connection.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/connection/db_connection.php');
 
 // Function to log user actions
 function logUserAction($conn, $user_id, $action_type, $inquiry_id, $details = null) {
@@ -82,7 +82,7 @@ function setMessageAndRedirect($type, $message, $redirect_url = null) {
     
     // Default redirect to create order page
     if (!$redirect_url) {
-        $redirect_url = "/OMS_R/dist/orders/create_order.php";
+        $redirect_url = "/OMS/dist/orders/create_order.php";
     }
     
     // Clear any output buffers before redirect
@@ -388,7 +388,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // FDE NEW PARCEL API INTEGRATION
                     
                     // Include the FDE API function
-                    include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/api/fde_new_parcel_api.php');
+                    include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/api/fde_new_parcel_api.php');
                     
                     // CITY HANDLING
                     $city_name = '';
@@ -534,7 +534,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // FDE EXISTING PARCEL API INTEGRATION
                     
                     // Include the FDE Existing Parcel API function
-                    include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/api/fde_existing_parcel_api.php');
+                    include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/api/fde_existing_parcel_api.php');
                     
                     // CITY HANDLING
                     $city_name = '';

@@ -22,6 +22,6 @@ if (isset($_COOKIE['email'])) {
 session_destroy();
 
 // Redirect to login page
-header("Location: /OMS_R/dist/pages/login.php");
+header("Location: /OMS/dist/pages/login.php");
 exit();
 ?>

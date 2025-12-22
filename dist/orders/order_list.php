@@ -13,12 +13,12 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     if (ob_get_level()) {
         ob_end_clean();
     }
-    header("Location: /OMS_R/dist/pages/login.php");
+    header("Location: /OMS/dist/pages/login.php");
     exit();
 }
 
 // Include database connection
-include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/connection/db_connection.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/connection/db_connection.php');
 
 
 // NEW: Get current user's role information
@@ -53,7 +53,7 @@ if ($current_user_id == 0 || $current_user_role == 0) {
 
 // If still no user data, redirect to login
 if ($current_user_id == 0) {
-    header("Location: /OMS_R/dist/pages/login.php");
+    header("Location: /OMS/dist/pages/login.php");
     exit();
 }
 
@@ -205,8 +205,8 @@ $usersQuery = "SELECT id, name FROM users ORDER BY name ASC";
 $usersResult = $conn->query($usersQuery);
 
 // Include navigation components
-include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/navbar.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/sidebar.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/navbar.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/sidebar.php');
 
 ?>
 
@@ -216,7 +216,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/sidebar.php');
 <head>
     <title>Order Management Admin Portal - All Orders</title>
     
-    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/head.php'); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/head.php'); ?>
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../assets/css/style.css" id="main-style-link" />
@@ -269,7 +269,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/sidebar.php');
 
 <body>
     <!-- Page Loader -->
-    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/loader.php'); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/loader.php'); ?>
 
     <div class="pc-container">
         <div class="pc-content">
@@ -728,7 +728,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/sidebar.php');
 
    
     <!-- Order View Modal -->
-      <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/order_view_modal.php'); ?>
+      <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/order_view_modal.php'); ?>
 
   <script>
 // MODIFIED: Enhanced JavaScript functionality with always-show payment slip button for paid orders
@@ -885,7 +885,7 @@ function viewPaymentSlip() {
     }
     
     // Construct the payment slip URL
-    const slipUrl = '/OMS_R/dist/uploads/payment_slips/' + encodeURIComponent(currentPaymentSlip);
+    const slipUrl = '/OMS/dist/uploads/payment_slips/' + encodeURIComponent(currentPaymentSlip);
     
     // Open payment slip in new tab
     window.open(slipUrl, '_blank');
@@ -988,7 +988,7 @@ document.getElementById("syncRoyalBtn").addEventListener("click", function() {
     btn.disabled = true; // Disable to prevent multiple clicks
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Syncing...';
 
-    fetch('/OMS_R/dist/api/royalexpress_webhook.php')
+    fetch('/OMS/dist/api/royalexpress_webhook.php')
         .then(response => response.json())
         .then(data => {
             btn.disabled = false;
@@ -1038,7 +1038,7 @@ document.getElementById("syncTransexpBtn").addEventListener("click", function() 
     btn.disabled = true; // Disable to prevent multiple clicks
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Syncing...';
 
-    fetch('/OMS_R/dist/api/transexp_webhook.php') // adjust path if needed
+    fetch('/OMS/dist/api/transexp_webhook.php') // adjust path if needed
         .then(response => response.json())
         .then(data => {
             btn.disabled = false;
@@ -1089,7 +1089,7 @@ document.getElementById("syncKoombiyoBtn").addEventListener("click", function() 
     btn.disabled = true; // Disable to prevent multiple clicks
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Syncing...';
 
-    fetch('/OMS_R/dist/api/koombiyo_webhook.php') // adjust path if needed
+    fetch('/OMS/dist/api/koombiyo_webhook.php') // adjust path if needed
         .then(response => response.json())
         .then(data => {
             btn.disabled = false;
@@ -1149,8 +1149,8 @@ document.getElementById("syncKoombiyoBtn").addEventListener("click", function() 
 
 </script>
     <!-- Include Footer and Scripts -->
-    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/footer.php'); ?>
-    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/scripts.php'); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/footer.php'); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/scripts.php'); ?>
 
 </body>
 </html>

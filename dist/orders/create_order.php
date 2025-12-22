@@ -8,12 +8,12 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     if (ob_get_level()) {
         ob_end_clean();
     }
-    header("Location: /OMS_R/dist/pages/login.php");
+    header("Location: /OMS/dist/pages/login.php");
     exit();
 }
 
 // Include the database connection file
-include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/connection/db_connection.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/connection/db_connection.php');
 
 // Function to log user actions
 function logUserAction($conn, $user_id, $action_type, $inquiry_id, $details = null) {
@@ -119,8 +119,8 @@ if ($deliveryFeeResult && $deliveryFeeResult->num_rows > 0) {
     $deliveryFee = floatval($row['delivery_fee']);
 }
 
-include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/navbar.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/sidebar.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/navbar.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/sidebar.php');
 ?>
 
 <!doctype html>
@@ -131,7 +131,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/sidebar.php');
     <!-- TITLE -->
     <title>Order Management Admin Portal - Create Order</title>
 
-    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/head.php'); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/head.php'); ?>
 
     <!-- [Template CSS Files] -->
     <link rel="stylesheet" href="../assets/css/styles.css" id="main-style-link" />
@@ -141,7 +141,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/sidebar.php');
 
 <body>
     <!-- LOADER -->
-    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/loader.php'); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/loader.php'); ?>
     <!-- END LOADER -->
 
     <!-- [ Main Content ] start -->
@@ -667,13 +667,13 @@ include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/sidebar.php');
     </div>
     <!-- FOOTER -->
     <?php
-    include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/footer.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/footer.php');
     ?>
     <!-- END FOOTER -->
 
     <!-- SCRIPTS -->
     <?php
-    include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/scripts.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/scripts.php');
     ?>
     <!-- END SCRIPTS -->
     <!-- jQuery -->
@@ -1944,7 +1944,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/sidebar.php');
 
     <!--redirect the page
 <script type="text/javascript">
-setTimeout("window.location='http://localhost/OMS_R/dist/orders/create_order.php'",5000);
+setTimeout("window.location='http://localhost/OMS/dist/orders/create_order.php'",5000);
 </script>-->
 
     <script>

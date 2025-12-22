@@ -14,12 +14,12 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     if (ob_get_level()) {
         ob_end_clean();
     }
-    header("Location: /OMS_R/dist/pages/login.php");
+    header("Location: /OMS/dist/pages/login.php");
     exit();
 }
 
 // Include database connection
-include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/connection/db_connection.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/connection/db_connection.php');
 
 /**
  * SEARCH AND PAGINATION PARAMETERS
@@ -181,8 +181,8 @@ if ($usersResult && $usersResult->num_rows > 0) {
 }
 
 // Include navigation components
-include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/navbar.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/sidebar.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/navbar.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/sidebar.php');
 
 ?>
 
@@ -192,7 +192,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/sidebar.php');
 <head>
     <title>Leads Management - All Leads</title>
     
-    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/head.php'); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/head.php'); ?>
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../assets/css/style.css" id="main-style-link" />
@@ -253,7 +253,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/sidebar.php');
 
 <body>
     <!-- Page Loader -->
-    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/loader.php'); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/loader.php'); ?>
 
     <div class="pc-container">
         <div class="pc-content">
@@ -599,7 +599,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/sidebar.php');
     </div>
 
     <!-- Lead View Modal -->
-    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/order_view_modal.php'); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/order_view_modal.php'); ?>
 
     <script>
     // Lead-specific JavaScript functionality
@@ -738,7 +738,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/sidebar.php');
         }
         
         // Construct the payment slip URL
-        const slipUrl = '/OMS_R/dist/uploads/payment_slips/' + encodeURIComponent(currentLeadId) + '.jpg';
+        const slipUrl = '/OMS/dist/uploads/payment_slips/' + encodeURIComponent(currentLeadId) + '.jpg';
         
         // Open payment slip in new tab
         window.open(slipUrl, '_blank');
@@ -782,7 +782,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/sidebar.php');
         console.log('Printing Order ID:', orderId);
         
         // Construct the print URL
-        const printUrl = '/OMS_R/dist/orders/download_order_print.php?id=' + encodeURIComponent(orderId.trim());
+        const printUrl = '/OMS/dist/orders/download_order_print.php?id=' + encodeURIComponent(orderId.trim());
 
         // Open print page in new window
         const printWindow = window.open(printUrl, '_blank');
@@ -831,8 +831,8 @@ include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/sidebar.php');
     </script>
 
     <!-- Include Footer and Scripts -->
-    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/footer.php'); ?>
-    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/scripts.php'); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/footer.php'); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/scripts.php'); ?>
 
 </body>
 </html>

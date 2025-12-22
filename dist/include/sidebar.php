@@ -8,7 +8,7 @@
         <?php
         // Initialize default values
         $logo_url = '../assets/images/Sortiq.png';
-        $company_name = 'OMS_R';
+        $company_name = 'OMS';
         $debug_info = [];
         
         try {
@@ -94,14 +94,14 @@
         
         // Final validation of default fallback
         $fallback_paths = [
-            '../assets/images/OMS_R.png',
-            'assets/images/OMS_R.png',
+            '../assets/images/OMS.png',
+            'assets/images/OMS.png',
             '../assets/images/default-logo.png',
             'assets/images/default-logo.png'
         ];
         
         $fallback_found = false;
-        if ($logo_url === '../assets/images/OMS_R.png') {
+        if ($logo_url === '../assets/images/OMS.png') {
             foreach ($fallback_paths as $fallback_path) {
                 if (file_exists($fallback_path)) {
                     $logo_url = $fallback_path;
@@ -319,7 +319,7 @@
 <?php
 // Optional: Add this function to your common functions file for reuse
 if (!function_exists('get_logo_with_fallback')) {
-    function get_logo_with_fallback($conn, $default_logo = '../assets/images/FEIT.png', $default_name = 'OMS_R') {
+    function get_logo_with_fallback($conn, $default_logo = '../assets/images/FEIT.png', $default_name = 'OMS') {
         $result = [
             'logo_url' => $default_logo,
             'company_name' => $default_name,

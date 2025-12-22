@@ -23,12 +23,12 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     if (ob_get_level()) {
         ob_end_clean();
     }
-    header("Location: /OMS_R/dist/pages/login.php");
+    header("Location: /OMS/dist/pages/login.php");
     exit();
 }
 
 // Include database connection
-include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/connection/db_connection.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/connection/db_connection.php');
 
 /**
  * GET FILTER PARAMETERS FROM URL
@@ -337,7 +337,7 @@ foreach ($orders as $order) {
                         <div class="header-section">
                             <div class="company-left">
                                 <div class="company-logo">
-                                    <img src="../assets/images/OMS_R.png" alt="Company Logo">
+                                    <img src="../assets/images/OMS.png" alt="Company Logo">
                                 </div>
                                 <div class="company-name"><?php echo htmlspecialchars($company['name']); ?></div>
                             </div>

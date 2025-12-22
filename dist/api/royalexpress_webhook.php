@@ -1,6 +1,6 @@
 <?php
 // Include DB connection
-include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/connection/db_connection.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/connection/db_connection.php');
 
 // =======================================
 // CONFIGURATION

@@ -8,12 +8,12 @@ session_start();
 // Check if user is logged in, if not redirect to login page
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     ob_end_clean();
-    header("Location: /OMS_R/dist/pages/login.php");
+    header("Location: /OMS/dist/pages/login.php");
     exit();
 }
 
 // Include the database connection file early
-include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/connection/db_connection.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/connection/db_connection.php');
 
 // Function to remove BOM and clean CSV headers
 function cleanCsvHeader($header) {
@@ -200,7 +200,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['csv_file']) && isset
     if (!$currentUserId) {
         $_SESSION['import_error'] = 'User session not found. Please login again.';
         ob_end_clean();
-        header("Location: /OMS_R/dist/pages/login.php");
+        header("Location: /OMS/dist/pages/login.php");
         exit();
     }
     
@@ -437,8 +437,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['csv_file']) && isset
 }
 
 // Include UI files after processing POST request to avoid header issues
-include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/navbar.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/sidebar.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/navbar.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/sidebar.php');
 ?>
 
 <!doctype html>
@@ -447,7 +447,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/sidebar.php');
 <head>
     <title>Order Management Admin Portal - Tracking CSV Upload</title>
     
-    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/head.php'); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/head.php'); ?>
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../assets/css/style.css" id="main-style-link" />
@@ -456,7 +456,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/sidebar.php');
 
 <body>
     <!-- Page Loader -->
-    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/loader.php'); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/loader.php'); ?>
 
     <div class="pc-container">
         <div class="pc-content">
@@ -537,7 +537,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/sidebar.php');
                     <form method="POST" enctype="multipart/form-data" id="uploadForm">
                         <!-- Download Template Button -->
                         <div class="template-download-section">
-                            <a href="/OMS_R/dist/templates/tracking_csv.php" class="template-download-btn">
+                            <a href="/OMS/dist/templates/tracking_csv.php" class="template-download-btn">
                                  Download CSV Template
                             </a>
                         </div>
@@ -587,9 +587,9 @@ include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/sidebar.php');
     </div>
 
     <!-- Footer -->
-    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/footer.php'); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/footer.php'); ?>
     <!-- Scripts -->
-    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/include/scripts.php'); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/include/scripts.php'); ?>
     
     <script>
         // Reset button functionality

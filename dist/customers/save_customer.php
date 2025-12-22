@@ -11,13 +11,13 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     echo json_encode([
         'success' => false,
         'message' => 'Unauthorized access. Please login again.',
-        'redirect' => '/OMS_R/dist/pages/login.php'
+        'redirect' => '/OMS/dist/pages/login.php'
     ]);
     exit();
 }
 
 // Include the database connection file
-include($_SERVER['DOCUMENT_ROOT'] . '/OMS_R/dist/connection/db_connection.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/OMS/dist/connection/db_connection.php');
 
 // Check database connection
 if ($conn->connect_error) {
@@ -91,7 +91,7 @@ try {
         echo json_encode([
             'success' => false,
             'message' => 'User session not found. Please login again.',
-            'redirect' => '/OMS_R/dist/pages/login.php'
+            'redirect' => '/OMS/dist/pages/login.php'
         ]);
         exit();
     }
