@@ -68,6 +68,9 @@ if ($result->num_rows === 0) {
 
 $order = $result->fetch_assoc();
 
+// Get order payment status
+$is_paid = (isset($order['pay_status']) && $order['pay_status'] === 'paid');
+
 // Get order items with proper quantity grouping for same products
 $items_query = "SELECT oi.product_id, p.name as product_name, 
                 SUM(oi.quantity) as total_quantity
@@ -213,17 +216,20 @@ $qr_url = $has_tracking ? getQRCodeUrl("Tracking: " . $tracking_number . " | Ord
 
             <!-- Customer Details and Totals -->
             <tr>
-                <td class="customer-header">Customer Details</td>
+                <td class="customer-header" <?php if ($is_paid) echo 'colspan="3"'; ?>>Customer Details</td>
+                <?php if (!$is_paid): ?>
                 <td class="totals-header">Summary</td>
                 <td class="totals-header">Amount</td>
+                <?php endif; ?>
             </tr>
 
             <tr>
-                <td class="customer-info">
+                <td class="customer-info" <?php if ($is_paid) echo 'colspan="3"'; ?>>
                     <strong>Name:</strong> <?php echo htmlspecialchars(substr($order['display_name'], 0, 20)); ?><br>
                     <strong>Phone:</strong> <?php echo htmlspecialchars($order['display_mobile']); ?><br>
                     <strong>Address:</strong> <?php echo htmlspecialchars(substr($order['display_address'], 0, 60)) . (strlen($order['display_address']) > 60 ? '...' : ''); ?>
                 </td>
+                <?php if (!$is_paid): ?>
                 <td class="totals-cell">
                     Subtotal:<br>
                     Delivery:<br>
@@ -234,13 +240,16 @@ $qr_url = $has_tracking ? getQRCodeUrl("Tracking: " . $tracking_number . " | Ord
                     <?php echo $currencySymbol . ' ' . number_format($delivery_fee, 2); ?><br>
                     <?php echo $currencySymbol . ' ' . number_format($discount, 2); ?>
                 </td>
+                <?php endif; ?>
             </tr>
 
             <!-- Total Payable -->
+            <?php if (!$is_paid): ?>
             <tr>
                 <td class="total-payable" colspan="2">TOTAL PAYABLE</td>
                 <td class="total-payable amount"><?php echo $currencySymbol . ' ' . number_format($total_payable, 2); ?></td>
             </tr>
+            <?php endif; ?>
         </table>
     </div>
 
