@@ -160,7 +160,7 @@ $qr_url = $has_tracking ? getQRCodeUrl("Tracking: " . $tracking_number . " | Ord
                         <?php if ($is_paid): ?>
                             <span style="font-weight: bold; margin-bottom: 2mm;">Paid</span>
                         <?php else: ?>
-                            <span style="font-weight: bold; margin-bottom: 2mm;">Unpaid</span>
+                            <span style="font-weight: bold; margin-bottom: 2mm;"></span>
                         <?php endif; ?>
                     </div>
                     <?php if ($has_tracking): ?>
@@ -222,8 +222,8 @@ $qr_url = $has_tracking ? getQRCodeUrl("Tracking: " . $tracking_number . " | Ord
 
             <!-- Customer Details and Totals -->
             <tr>
-                <td class="customer-header" <?php if ($is_paid) echo 'colspan="3"'; ?>>Customer Details</td>
                 <?php if (!$is_paid): ?>
+                <td class="customer-header">Customer Details</td>
                 <td class="totals-header">Summary</td>
                 <td class="totals-header">Amount</td>
                 <?php endif; ?>
@@ -231,6 +231,10 @@ $qr_url = $has_tracking ? getQRCodeUrl("Tracking: " . $tracking_number . " | Ord
 
             <tr>
                 <td class="customer-info" <?php if ($is_paid) echo 'colspan="3"'; ?>>
+                    <?php if ($is_paid): ?>
+                    <!-- <div class="customer-info">Customer Details</div> -->
+                    <strong>Customer Details<strong> <br>
+                    <?php endif; ?>
                     <strong>Name:</strong> <?php echo htmlspecialchars(substr($order['display_name'], 0, 20)); ?><br>
                     <strong>Phone:</strong> <?php echo htmlspecialchars($order['display_mobile']); ?><br>
                     <strong>Address:</strong> <?php echo htmlspecialchars(substr($order['display_address'], 0, 60)) . (strlen($order['display_address']) > 60 ? '...' : ''); ?>

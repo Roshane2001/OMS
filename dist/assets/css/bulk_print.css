@@ -22,8 +22,8 @@
 
 /* Individual Label - FIXED: Better space management */
 .label-wrapper {
-    width: 8.5cm;
-    height: 8.5cm;
+    width: 10.00cm;
+    height: 10.00cm;
     border: 1px dashed #333;
     padding: 2mm;
     overflow: hidden;
