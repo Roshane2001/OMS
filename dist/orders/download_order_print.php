@@ -156,7 +156,13 @@ $qr_url = $has_tracking ? getQRCodeUrl("Tracking: " . $tracking_number . " | Ord
                 </td>
                 <td class="order-id-cell">
                     <div style="font-weight: bold; margin-bottom: 2mm;">Order ID: <?php echo str_pad($order_id, 5, '0', STR_PAD_LEFT); ?></div>
-                    
+                    <div style="font-weight: bold; margin-bottom: 2mm;">
+                        <?php if ($is_paid): ?>
+                            <span style="font-weight: bold; margin-bottom: 2mm;">Paid</span>
+                        <?php else: ?>
+                            <span style="font-weight: bold; margin-bottom: 2mm;">Unpaid</span>
+                        <?php endif; ?>
+                    </div>
                     <?php if ($has_tracking): ?>
                         <div style="font-weight: bold; margin-bottom: 2mm; color: #2563eb;"></div>
                         <div class="barcode-section">
